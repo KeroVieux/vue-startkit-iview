@@ -4393,7 +4393,7 @@ object-assign@4.1.0:
   version "4.1.0"
   resolved "http://registry.npm.taobao.org/object-assign/download/object-assign-4.1.0.tgz#7a3b3d0e98063d43f4c03f2e8ae6cd51a86883a0"
 
-object-assign@^4.0.1, object-assign@^4.1.0, object-assign@^4.1.1:
+object-assign@^4.0.1, object-assign@^4.1.0:
   version "4.1.1"
   resolved "http://registry.npm.taobao.org/object-assign/download/object-assign-4.1.1.tgz#2109adc7965887cfc05cbbd442cac8bfbb360863"
 
@@ -4767,7 +4767,7 @@ postcss-filter-plugins@^2.0.0:
     postcss "^5.0.4"
     uniqid "^4.0.0"
 
-postcss-load-config@^1.1.0, postcss-load-config@^1.2.0:
+postcss-load-config@^1.1.0:
   version "1.2.0"
   resolved "http://registry.npm.taobao.org/postcss-load-config/download/postcss-load-config-1.2.0.tgz#539e9afc9ddc8620121ebf9d8c3673e0ce50d28a"
   dependencies:
@@ -4789,15 +4789,6 @@ postcss-load-plugins@^2.3.0:
   dependencies:
     cosmiconfig "^2.1.1"
     object-assign "^4.1.0"
-
-postcss-loader@^1.3.3:
-  version "1.3.3"
-  resolved "http://registry.npm.taobao.org/postcss-loader/download/postcss-loader-1.3.3.tgz#a621ea1fa29062a83972a46f54486771301916eb"
-  dependencies:
-    loader-utils "^1.0.2"
-    object-assign "^4.1.1"
-    postcss "^5.2.15"
-    postcss-load-config "^1.2.0"
 
 postcss-merge-idents@^2.1.5:
   version "2.1.7"
@@ -4967,7 +4958,7 @@ postcss-zindex@^2.0.1:
     postcss "^5.0.4"
     uniqs "^2.0.0"
 
-postcss@^5.0.10, postcss@^5.0.11, postcss@^5.0.12, postcss@^5.0.13, postcss@^5.0.14, postcss@^5.0.16, postcss@^5.0.2, postcss@^5.0.21, postcss@^5.0.4, postcss@^5.0.5, postcss@^5.0.6, postcss@^5.0.8, postcss@^5.2.15, postcss@^5.2.16:
+postcss@^5.0.10, postcss@^5.0.11, postcss@^5.0.12, postcss@^5.0.13, postcss@^5.0.14, postcss@^5.0.16, postcss@^5.0.2, postcss@^5.0.21, postcss@^5.0.4, postcss@^5.0.5, postcss@^5.0.6, postcss@^5.0.8, postcss@^5.2.16:
   version "5.2.17"
   resolved "http://registry.npm.taobao.org/postcss/download/postcss-5.2.17.tgz#cf4f597b864d65c8a492b2eabe9d706c879c388b"
   dependencies:
@@ -5908,12 +5899,6 @@ strip-indent@^1.0.1:
 strip-json-comments@~2.0.1:
   version "2.0.1"
   resolved "http://registry.npm.taobao.org/strip-json-comments/download/strip-json-comments-2.0.1.tgz#3c531942e908c2697c0ec344858c286c7ca0a60a"
-
-style-loader@^0.17.0:
-  version "0.17.0"
-  resolved "http://registry.npm.taobao.org/style-loader/download/style-loader-0.17.0.tgz#e8254bccdb7af74bd58274e36107b4d5ab4df310"
-  dependencies:
-    loader-utils "^1.0.2"
 
 supports-color@3.1.2, supports-color@^3.1.0:
   version "3.1.2"
