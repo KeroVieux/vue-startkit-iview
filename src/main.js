@@ -12,6 +12,8 @@ import store from './vuex/store'
 
 const _ = require('lodash')
 
+const currentEnv = Config.dev
+
 Moment.locale('zh-CN')
 
 _.assign(window, {
@@ -23,12 +25,19 @@ _.assign(window, {
   rtpToken: null,
   userToken: null,
   currentUser: null,
+  currentEnv,
 })
 
-// axios.defaults.baseURL = Config.dev.apiUrl
 axios.defaults.baseURL = 'https://api.github.com'
-Vue.config.devtools = true
+Vue.config.devtools = currentEnv.testingMode
 Vue.use(iView)
+router.beforeEach((to, from, next) => {
+  iView.LoadingBar.start()
+  next()
+})
+router.afterEach(() => {
+  iView.LoadingBar.finish()
+})
 new Vue({
   el: '#app',
   router,
