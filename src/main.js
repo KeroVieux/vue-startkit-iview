@@ -8,7 +8,7 @@ import './assets/sass/screen.scss'
 import App from './App'
 import router from './router'
 import store from './vuex/store'
-// import Config from './assets/config/arguments.config'
+import Config from './assets/config/arguments.config'
 
 const _ = require('lodash')
 
@@ -22,9 +22,6 @@ _.assign(window, {
   store,
   Moment,
   axios,
-  rtpToken: null,
-  userToken: null,
-  currentUser: null,
   currentEnv,
 })
 
