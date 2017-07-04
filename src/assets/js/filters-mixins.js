@@ -14,6 +14,26 @@ import Moment from 'moment'
 const _ = require('lodash')
 
 const FiltersMixin = {
+  /**
+   * Detect it's a real empty
+   * @param {string} value - A arg gonna be detect .
+   * @param {string} defaultText - If it's a empty arg , will show the default test .
+   * @returns {string}
+   * @example
+   * {{data.author | isEmpty('管理员')}}
+   */
+  isEmpty(value, defaultText) {
+    let trimValue = _.trim(value)
+    if (!trimValue) {
+      if(defaultText){
+        return defaultText
+      }else {
+        return '空'
+      }
+    }else {
+      return trimValue
+    }
+  },
   add(value, addend = 0) {
     if (!_.isNumber(value)) {
       value = _.toNumber(value)
