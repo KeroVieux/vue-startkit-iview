@@ -1,6 +1,9 @@
 /**
  * Created by PetitKero on 13/10/2016.
  */
+
+import queryString from 'query-string'
+
 /**
  * This provides mixins used for common api in the Vue components.
  * Before you begin to used it , plz inject this mixins in the components
@@ -8,29 +11,36 @@
  *
  * @mixin
  */
-import axios from 'axios'
 
 const ApiMixin = {
   handleReqError(req) {
     if (req.data.error) {
-      // this.$vux.toast.show({
-      //   type: 'text',
-      //   text: req.data && req.data.error ? req.data.error : '未知错误',
-      // })
+      this.$vux.toast.show({
+        type: 'text',
+        text: req.data && req.data.error ? req.data.error : '未知错误',
+      })
     }
     return req.data.error
   },
-  handleCatchError() {
-    // this.$vux.toast.show({
-    //   type: 'text',
-    //   text: err.response && err.response.statusText ? err.response.statusText : '未知错误',
-    // })
+  handleCatchError(err) {
+    console.log('handleCatchError err', err)
     return false
+  },
+  async getUsers(arg) {
+    try {
+      const req = await axios.get(`/api/qy-wexin/ldap-users?${queryString.stringify(arg)}`)
+      return req.data
+    } catch (err) {
+      this.handleCatchError(err)
+      return err
+    }
   },
   async usersList() {
     try {
       const req = await axios.get('users')
-      this.handleReqError(req)
+      if (req.error) {
+        return this.handleReqError(req)
+      }
       return req.data
     } catch (err) {
       this.handleCatchError(err)
@@ -40,18 +50,10 @@ const ApiMixin = {
   async user(username) {
     try {
       const req = await axios.get(`users/${username}`)
-      this.handleReqError(req)
+      if (req.error) {
+        return this.handleReqError(req)
+      }
       return req.data
-    } catch (err) {
-      this.handleCatchError(err)
-      return err
-    }
-  },
-  async getChartData(url) {
-    const apiUrl = url || `${window.globalArg.testDataUrl}`
-    try {
-      const res = await axios.get(apiUrl)
-      return res.data
     } catch (err) {
       this.handleCatchError(err)
       return err
