@@ -2,6 +2,7 @@ import axios from 'axios'
 import iView from 'iview'
 import Moment from 'moment'
 import Vue from 'vue'
+import _ from 'lodash'
 import LocalForage from 'localforage'
 import 'vue2-animate/src/vue2-animate.less'
 import './assets/less/custom-theme.less'
@@ -13,15 +14,16 @@ import fnMixin from './assets/js/fn-mixins'
 import Config from './assets/config/arguments.config'
 import ConsoleTrigger from './assets/config/consoleTrigger'
 
-const _ = require('lodash')
-
 const currentEnv = Config.dev
 
 Moment.locale('zh-CN')
-if (currentEnv.DEBUG && fnMixin.methods.urlParam('vConsole') === 'true') {
+LocalForage.setDriver(LocalForage.LOCALSTORAGE)
+if (currentEnv.DEBUG || fnMixin.methods.urlParam('console') === 'true') {
   require('vconsole/dist/vconsole.min')
+  Vue.config.devtools = true
+} else {
+  ConsoleTrigger(false)
 }
-ConsoleTrigger(currentEnv.DEBUG)
 
 _.assign(window, {
   _,
@@ -34,7 +36,7 @@ _.assign(window, {
 })
 
 axios.defaults.baseURL = currentEnv.apiServer
-Vue.config.devtools = currentEnv.DEVTOOLS
+
 Vue.use(iView)
 router.beforeEach((to, from, next) => {
   iView.LoadingBar.start()

@@ -1,7 +1,5 @@
 export default {
   dev: {
-    DEVTOOLS: true,
-    vConsole: false,
     fakeUser: true,
     postLogs: false,
     DEBUG: true,
