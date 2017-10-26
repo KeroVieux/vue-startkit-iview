@@ -256,3 +256,87 @@
 .fade-fast-enter, .fade-fast-leave-active {
   opacity: 0
 }
+.hidden-pc{
+  display: block;
+  @include breakpoint(lg) {
+    display: none;
+  }
+  @include breakpoint(md) {
+    display: none;
+  }
+}
+.hidden-mobile{
+  display: block;
+  @include breakpoint(sm) {
+    display: none;
+  }
+  @include breakpoint(xs) {
+    display: none;
+  }
+}
+.hidden-lg{
+  display: block;
+  @include breakpoint(lg) {
+    display: none;
+  }
+}
+.hidden-md{
+  display: block;
+  @include breakpoint(md) {
+    display: none;
+  }
+}
+.hidden-sm{
+  display: block;
+  @include breakpoint(sm) {
+    display: none;
+  }
+}
+.hidden-xs{
+  display: block;
+  @include breakpoint(xs) {
+    display: none;
+  }
+}
+.visible-pc{
+  display: none;
+  @include breakpoint(lg) {
+    display: block;
+  }
+  @include breakpoint(md) {
+    display: block;
+  }
+}
+.visible-mobile{
+  display: none;
+  @include breakpoint(sm) {
+    display: block;
+  }
+  @include breakpoint(xs) {
+    display: block;
+  }
+}
+.visible-lg{
+  display: none;
+  @include breakpoint(lg) {
+    display: block;
+  }
+}
+.visible-md{
+  display: none;
+  @include breakpoint(md) {
+    display: block;
+  }
+}
+.visible-sm{
+  display: none;
+  @include breakpoint(sm) {
+    display: block;
+  }
+}
+.visible-xs{
+  display: none;
+  @include breakpoint(xs) {
+    display: block;
+  }
+}
