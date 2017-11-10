@@ -8,10 +8,10 @@
 
 const fnMixin = {
   /**
-   /* 生日转换为星座
-   /* @param mon 月份
-   /* @param day 日份（1-31）
-   /* @return string 对应日期生日的星座字符串
+   * 生日转换为星座
+   * @param mon 月份
+   * @param day 日份（1-31）
+   * @return string 对应日期生日的星座字符串
    **/
   constellation(mon, day) {
     const s = '摩羯水瓶双鱼牡羊金牛双子巨蟹狮子处女天秤天蝎射手摩羯'
@@ -107,13 +107,6 @@ const fnMixin = {
   goToLink(url) {
     this.$router.push(url)
   },
-  /**
-   * Replace the numerical to the ancient Chinese number
-   * @param {number} n - number need to replaced
-   * @returns {string} like '零', '壹', '贰', '叁', '肆', '伍', '陆', '柒', '捌', '玖'
-   * @example
-   * let cny = numToCny(100)
-   */
   /**
    * Get the systemInfo
    * @returns object
@@ -214,6 +207,13 @@ const fnMixin = {
     }, 0)
     return info
   },
+  /**
+   * Replace the numerical to the ancient Chinese number
+   * @param {number} n - number need to replaced
+   * @returns {string} like '零', '壹', '贰', '叁', '肆', '伍', '陆', '柒', '捌', '玖'
+   * @example
+   * let cny = numToCny(100)
+   */
   numToCny(n) {
     const fraction = ['角', '分']
     const digit = [
