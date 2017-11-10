@@ -2,6 +2,9 @@
 
 > A Vue.js project
 
+### 文档生成
+cli执行 `jsdoc -c ./conf.json`
+
 ## 以下内容待完善
 
 ``` bash
