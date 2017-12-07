@@ -25,6 +25,12 @@ if (currentEnv.DEBUG || fnMixin.methods.urlParam('console') === 'true') {
   ConsoleTrigger(false)
 }
 
+_.assign(Vue.prototype, {
+  _,
+  Moment,
+  currentEnv,
+})
+
 _.assign(window, {
   _,
   Vue,
@@ -38,13 +44,7 @@ _.assign(window, {
 axios.defaults.baseURL = currentEnv.apiServer
 
 Vue.use(iView)
-router.beforeEach((to, from, next) => {
-  iView.LoadingBar.start()
-  next()
-})
-router.afterEach(() => {
-  iView.LoadingBar.finish()
-})
+
 new Vue({
   el: '#app',
   store,
@@ -53,3 +53,10 @@ new Vue({
   components: { App },
 })
 
+router.beforeEach((to, from, next) => {
+  iView.LoadingBar.start()
+  next()
+})
+router.afterEach(() => {
+  iView.LoadingBar.finish()
+})
