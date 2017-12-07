@@ -13,19 +13,20 @@ import queryString from 'query-string'
  */
 
 const ApiMixin = {
-  async apiComments(arg = { method: 'get', params: {} }) {
-    let res = null
+  async apiArticles(arg = { method: 'get', params: {} }) {
+    iView.LoadingBar.start()
+    let [err, req] = [null, null]
     switch (arg.method) {
       case 'post':
-        res = await axios.post(`${currentEnv.diningServer}/api/comments`, arg.params)
+        [err, req] = await To(axios.post('articles/', arg.params))
         break
       case 'patch':
-        res = await axios.patch(`${currentEnv.diningServer}/api/messages/${arg.params.related_message_id}/comments/${arg.params.comment_id}`, arg.params)
+        [err, req] = await To(axios.patch(`articles/${arg.params.article_id}`, arg.params))
         break
       default:
-        res = await axios.get(`${currentEnv.diningServer}/api/messages/${arg.params && arg.params.message_id ? arg.params.message_id : ''}?${queryString.stringify(arg.params)}`)
+        [err, req] = await To(axios.get(`articles/${arg.params && arg.params.article_id ? arg.params.article_id : ''}?${queryString.stringify(arg.params)}`))
     }
-    return res.data
+    return this.globalCB(err, req)
   },
   /**
    * Generate the logs on server , when the user have done something sensitive with server requires,
@@ -57,12 +58,24 @@ const ApiMixin = {
     const req = await axios.get(`${currentEnv.wxServer}/api/qy-wexin/user_detail?${queryString.stringify(params)}`)
     return req.data
   },
+  globalCB(err, req) {
+    if (err) {
+      this.$Loading.error()
+      this.$Message.error(_.toString(err))
+      return { error: _.toString(err) }
+    } else if (req && req.data && req.data.status === 401) {
+      this.$Loading.error()
+      this.$Message.error('请先登录')
+      this.$router.push('/entrances/signin')
+    } else if (req && req.data && req.data.error) {
+      this.$Loading.error()
+      this.$Message.error(req.data.error)
+    }
+    this.$Loading.finish()
+    return req.data
+  },
 }
 
 export default {
-  created() {
-    document.documentElement.scrollTop = 0
-    document.body.scrollTop = 0
-  },
   methods: ApiMixin,
 }
