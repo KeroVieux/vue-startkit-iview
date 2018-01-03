@@ -7,16 +7,27 @@ export default new Router({
   routes: [
     {
       path: '/',
-      name: 'Tables',
-      component(resolve) {
-        require(['@/components/Hello'], resolve)
-      },
+      redirect: '/hello',
     },
     {
       path: '/hello',
       name: 'Hello',
       component(resolve) {
-        require(['@/components/tables'], resolve)
+        require(['@/components/Hello'], resolve)
+      },
+    },
+    {
+      path: '/error',
+      name: 'Error',
+      component(resolve) {
+        require(['@/components/common/page_error'], resolve)
+      },
+    },
+    {
+      path: '*',
+      name: '404',
+      component(resolve) {
+        require(['@/components/common/error404'], resolve)
       },
     },
   ],

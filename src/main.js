@@ -39,6 +39,7 @@ _.assign(window, {
   axios,
   LocalForage,
   currentEnv,
+  iView,
 })
 
 axios.defaults.baseURL = currentEnv.apiServer

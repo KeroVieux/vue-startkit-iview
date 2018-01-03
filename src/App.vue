@@ -2,7 +2,7 @@
   <div id="app">
     <PageHeader></PageHeader>
     <div class="p-t-20"></div>
-    <div class="container">
+    <div>
       <transition name="fade-fast">
         <router-view></router-view>
       </transition>

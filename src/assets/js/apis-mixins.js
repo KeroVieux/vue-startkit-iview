@@ -3,6 +3,7 @@
  */
 
 import queryString from 'query-string'
+import To from 'await-to-js'
 
 /**
  * This provides mixins used for common api in the Vue components.
@@ -13,6 +14,16 @@ import queryString from 'query-string'
  */
 
 const ApiMixin = {
+  async apiSendMsg(token, params) {
+    iView.LoadingBar.start()
+    const instance = axios.create({
+      headers: {
+        Authorization: token,
+      },
+    })
+    const [err, req] = await To(instance.post(`${currentEnv.wxServer}/api/weixin-news-msgs`, params))
+    return this.globalCB(err, req)
+  },
   async apiArticles(arg = { method: 'get', params: {} }) {
     iView.LoadingBar.start()
     let [err, req] = [null, null]
